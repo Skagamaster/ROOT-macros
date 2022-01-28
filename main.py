@@ -24,10 +24,9 @@ import matplotlib.pyplot as plt
 
 folder = r"C:\PhysicsProcessing\run_files"
 os.chdir(folder)
-# day_set = np.asarray((31, 32, 33, 34, 35, 36, 37))
-day_set = np.asarray((37, 37))
+day_set = np.asarray((31, 32, 33, 34, 35, 36, 37))
 spectra = []
-"""
+
 print("Getting spectra for day:")
 for i in range(len(day_set)):
     print(day_set[i])
@@ -48,24 +47,3 @@ for i in range(len(day_set)):
     except Exception as e:  # For any issues that might pop up.
         print("Darn it!", e.__class__, "occurred on day", day_set[i])
         continue
-"""
-# The below was for when I was running over Runs, not Days.
-# TODO Integrate this in the code so it's not so ad hoc.
-
-folder = r"C:\PhysicsProcessing\run_files"
-os.chdir(folder)
-count = 0
-print("Working on file")
-for i in os.listdir():
-    print(count, "of", len(os.listdir()))
-    try:
-        spectra.append(spikes.ADCSpectra(True))
-        spectra[count].import_data(i)
-        spectra[count].ped_find()
-        spectra[count].plot_ped_locs(i)
-        spectra[count].ped_plot(i)
-    except Exception as e:  # For any issues that might pop up.
-        print("Darn it!", e.__class__, "occurred in run", i)
-        count += 1
-        continue
-    count += 1
